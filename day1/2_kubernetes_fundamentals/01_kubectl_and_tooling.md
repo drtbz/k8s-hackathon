@@ -102,12 +102,15 @@
 
 1. See cpu and memory usage of all nodes
 
-    ```bash    
-    # This may not work out of the box on Docker-desktop k8s if Metrics Server is not installed.
-    # If possible, troubleshoot this by doing a quick search on how to enable metrics-server for Docker-desktop k8s. 
-    # Or just move on to next step for now.
+    ```bash        
     kubectl top nodes    
     ```
+
+    * This may not work out of the box on Docker-desktop k8s if Metrics Server is not installed.
+    * If possible, troubleshoot this by doing a quick search on how to enable metrics-server for Docker-desktop k8s. 
+    * For hints, also take a look at [metrics-server dir](./metrics-server/) under `bonus`
+    
+        > Or just move on to next step for now.
 
     If you're interested to know more about metrics in k8s, take a look at:   
 
