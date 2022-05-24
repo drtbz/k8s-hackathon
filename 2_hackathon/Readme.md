@@ -5,13 +5,26 @@
 ### Guidelines
 
 * You're free to use the language, web framework of your choice. 
-* Focus more on containerization and kubernetes aspects rather than the actual design and implementation of the app itself. You just need two components at the very least. such as:
+* Focus more on containerization and kubernetes aspects rather than the actual design and implementation of the app itself. You just need two components at the very least, such as the one demonstrated in webinars. Something like below:
     * A front-end webapp 
     * A backend api
     * Bonus: third component for caching or storage such as `Redis`.
+* Use `ghcr` for image registry. Do not put any sensitive content into the app.
 * You can use the below to repos as a reference, but please make sure you're building the app, dockerfiles, kubernetes manifests from the scratch
     * https://github.com/suren-m/cndev
     * https://github.com/suren-m/cndev-config/tree/main/kustomization/base (you don't need to use kustomize. Just plain manifests to start with and bring in helm later on if time permits)
+
+### Bonus Scenarios
+
+* Use Helm to configure your app for multiple environments. (maybe to `dev1` and `dev2` namespaces, each taking different values for `replicas`)
+* Use `Github Actions` CI builds and pushing images to `ghcr`
+* Incorporate `image scanning` into your CI pipeline
+* Apply `resource limits` on containers
+* Apply `resource quotas` and `limit ranges` on namespaces
+* Use `Terraform` for `iac` for your `aks` cluster
+* Explore a `Service Mesh` or `dapr` as you see fit. Refer to recordings of webinars delivered on these topics.
+* Explore `Bridge to Kubernetes` or `Attach vs code to pod` feature for debugging your app running on your own namespace.
+* Explore `GitOps` using a tool such as `ArgoCd`. Refer to recordings of webinars delivered on GitOps.
 
 
 
