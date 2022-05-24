@@ -1,5 +1,9 @@
 # Getting Started with Docker
 
+## Make sure you have Docker-desktop installed with Kubernetes enabled. Speak to your team lead / point-of-contact if you have any doubts on this and docker desktop licensing.
+
+### Create yourself a couple of parent directories for the hackathon. Perhaps, one for the labs on Day1 and another (will be a git repo) for the actual application you'll be building collaboratively.
+
 ## Hello World Container
 
 From terminal, run

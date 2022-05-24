@@ -1,5 +1,7 @@
 # Dockerfile - Level II (multi stage builds using a simple dotnet core app)
 
+> ### You'll be doing this when building the app as well, so feel free to search for dockerfile examples based on the programming language / framework of your choice. Below `dotnet` example is just for reference. 
+
 ## Containerize a simple dotnet app
 
 1. Create a folder called `my-apps` and `cd` into it.
