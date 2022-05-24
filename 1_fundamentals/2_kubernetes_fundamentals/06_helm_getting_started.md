@@ -9,6 +9,8 @@ kubectl config set-context --current --namespace=helm-lab
 
 ### Steps
 
+> Install Helm if you hadn't already, see: https://helm.sh/docs/intro/install/ (pick an option that's most suited for you)
+
 1. You can get started with your first Helm chart by using the ```helm create``` command:
 
     ```bash
