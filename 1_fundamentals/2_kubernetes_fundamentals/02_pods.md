@@ -1,13 +1,19 @@
 # namespaces
 
-Namespaces are like virtual clusters and allow you to isolate your workloads. Make sure to create yourself a namespace if you hadn't done so. Otherwise, all your resources will go to a namespace called `default` which is not recommended.
+Namespaces are very important objects in Kubernetes and they act like virtual clusters and allow you to isolate your workloads. Make sure to create yourself a namespace if you hadn't done so. Otherwise, all your resources will go to a namespace called `default` which is not recommended.
 
 Example:
 ```bash
 kubectl create ns hackathon
 # set it as default
 kubectl config set-context --current --namespace=hackathon
+# see all ns
+kubectl get ns
+# see current context and its default ns
+kubectl config get-contexts
 ```
+For more, see: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+
 ---
 
 # Pods
