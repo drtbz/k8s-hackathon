@@ -25,10 +25,10 @@
 * Incorporate `image scanning` into your CI pipeline
 * Apply `resource limits` on containers
 * Apply `resource quotas` and `limit ranges` on namespaces
-* Use `Terraform` for `iac` for your `aks` cluster
 * Explore a `Service Mesh` or `dapr` as you see fit. Refer to recordings of webinars delivered on these topics.
 * Explore `Bridge to Kubernetes` or `Attach vs code to pod` feature for debugging your app running on your own namespace.
 * Explore `GitOps` using a tool such as `ArgoCd`. Refer to recordings of webinars delivered on GitOps.
+* For DevOps / Cloud Engineers - Use `Terraform` for `iac` for your `aks` cluster 
 
 
 
