@@ -24,7 +24,7 @@ Make sure you're using a personal / temporary github account.
         # Copy the image-id
         docker tag <image-id> <github-username>/hello-web:1.0
 
-        docker push <docker-hub-username>/hello-web:1.0
+        docker push <github-username>/hello-web:1.0
     ```
 
 2. Go to `hub.docker.com` to ensure your image is pushed correctly. We will come to this image later during kubernetes labs.
