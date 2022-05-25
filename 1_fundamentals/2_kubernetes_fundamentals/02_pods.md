@@ -1,3 +1,15 @@
+# namespaces
+
+Namespaces are like virtual clusters and allow you to isolate your workloads. Make sure to create yourself a namespace if you hadn't done so. Otherwise, all your resources will go to a namespace called `default` which is not recommended.
+
+Example:
+```bash
+kubectl create ns hackathon
+# set it as default
+kubectl config set-context --current --namespace=hackathon
+```
+---
+
 # Pods
 
 Pods are the smallest deployable units of computing that can be created and managed in Kubernetes. 
