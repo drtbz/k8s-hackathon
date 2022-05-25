@@ -9,9 +9,11 @@
     * A front-end webapp 
     * A backend api
     * Bonus: third component for caching or storage such as `Redis`.
-* Use `ghcr` for image registry. Do not put any sensitive content into the app.
-* Recommended: Explore and use `docker-compose` for bringing up multiple containers together (locally) without `kuberentes`
+* Containerize the app components and use `ghcr` for image registry. Do not put any sensitive content into the app.
+* Recommended: Explore and use `docker-compose` for bringing up multiple containers together (locally) without `kuberentes`.
+  * Avoid hard-coding backend service api url. Use env variables when possible. (can be done as part of Dockerfile too)
 * Build essential kubernetes manifests for all your app components and deploy them to your cluster.
+* Use ConfigMap and inject backend service location / url as an environment variable (may need some refactoring to Dockerfile if required)
 * You can use the below to repos as a reference, but please make sure you're building the app, dockerfiles, kubernetes manifests from the scratch
     * https://github.com/suren-m/cndev (for containerization)
     * https://github.com/suren-m/cndev-config/tree/main/kustomization/base (for manifests. Note: you don't need to use kustomize. Just plain manifests to start with and bring in helm later on if time permits)
