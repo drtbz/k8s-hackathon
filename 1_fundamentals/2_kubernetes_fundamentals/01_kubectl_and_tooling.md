@@ -64,7 +64,7 @@ For more, see: https://kubernetes.io/docs/concepts/overview/working-with-objects
     *         docker-desktop    docker-desktop      docker-desktop         <your-namespace-name>
     ```
 
-    > Important: If the NAMESPACE column is blank or doesn't contain your namespace name, it means you haven't configured your default namespace correctly. See repo's readme document or reach out to the instructor for help.
+    > Important: If the NAMESPACE column is blank or doesn't contain your namespace name, it means you haven't configured your default namespace correctly. 
 
 4. Get a list of nodes in the cluster.
 
