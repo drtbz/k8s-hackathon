@@ -116,7 +116,7 @@ For more, see: https://kubernetes.io/docs/concepts/overview/working-with-objects
 
 ---
 
-## Exercise 3 - Retrieve CPU and Memory metrics from your nodes
+## Bonus: (skip it for now if you're a bit behind on the schedule) Exercise 3 - Retrieve CPU and Memory metrics from your nodes
 
 1. See cpu and memory usage of all nodes
 
