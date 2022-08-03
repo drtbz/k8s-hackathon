@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: hello-web
+  annotations:
+    kubernetes.io/change-cause: v1.0 release # rollout change clause
+  name: hello-web
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: hello-web
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: hello-web
+    spec:
+      containers:
+        - image: ghcr.io/suren-m/hello-web:1.0
+          name: hello-web
+          resources: {}
+status: {}

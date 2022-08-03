@@ -1,0 +1,49 @@
+# curl -si localhost:9999 | head -n 1 | xargs -I {} echo $(date) {}
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  # annotations:
+  #   seccomp.security.alpha.kubernetes.io/pod: runtime/default
+  labels:
+    run: multi-container
+  name: multi-container
+spec:
+  volumes:
+    - name: log-data
+      emptyDir: {}
+  containers:
+    - image: nginx:1.23.1
+      name: server
+      resources:
+        limits:
+          memory: "128Mi"
+          cpu: "250m"
+    - image: curlimages/curl:latest
+      name: client
+      volumeMounts:
+        - name: log-data
+          mountPath: /app-logs
+      command:
+        [
+          "sh",
+          "-c",
+          "while sleep 2; do curl -si localhost:80 | head -n 1 | xargs -I {} echo $(date) {} | tee -a //app-logs//http.log; done",
+        ]
+      resources:
+        limits:
+          memory: "128Mi"
+          cpu: "250m"
+    - image: busybox:latest
+      name: logger
+      command: ["sh", "-c", "sleep 5; tail -n 10 -f /app-logs/http.log"]
+      volumeMounts:
+        - name: log-data
+          mountPath: /app-logs
+      resources:
+        limits:
+          memory: "128Mi"
+          cpu: "250m"
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}

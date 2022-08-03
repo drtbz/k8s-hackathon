@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: demo-ns-quota
+spec:
+  hard:
+    pods: "10"
+    limits.cpu: "2"
+    limits.memory: "3Gi"

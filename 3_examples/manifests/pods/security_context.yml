@@ -1,0 +1,28 @@
+# curl -si localhost:9999 | head -n 1 | xargs -I {} echo $(date) {}
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  # annotations:
+  #   seccomp.security.alpha.kubernetes.io/pod: runtime/default
+  labels:
+    run: security-context
+  name: security-context
+spec:
+  securityContext:
+    runAsUser: 1000
+    runAsGroup: 3000
+    fsGroup: 2000
+  # supplementalGroups:
+  #   - 3000
+  containers:
+    - image: ubuntu:latest
+      name: security-context
+      command: ["sh", "-c", "sleep infinity"]
+      resources: {}
+      securityContext:
+        privileged: false
+        allowPrivilegeEscalation: false
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}
