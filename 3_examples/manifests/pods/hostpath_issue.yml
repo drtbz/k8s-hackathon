@@ -1,0 +1,34 @@
+# curl -si localhost:9999 | head -n 1 | xargs -I {} echo $(date) {}
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: hostpath-issue
+  name: hostpath-issue
+spec:
+  securityContext:
+    runAsUser: 1000
+    runAsGroup: 3000
+    fsGroup: 2000
+  volumes:
+    - name: test-volume
+      hostPath:
+        # This is a huge problem
+        # see: https://kubernetes.io/docs/concepts/storage/volumes/#hostpath
+        path: /
+        type: Directory
+  containers:
+    - image: busybox:latest
+      name: logger
+      command: ["sh", "-c", "while sleep 2; do ls /test; done;"]
+      volumeMounts:
+        - name: test-volume
+          mountPath: /test
+      resources: {}
+      securityContext:
+        privileged: false
+        allowPrivilegeEscalation: false
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}

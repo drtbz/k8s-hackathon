@@ -4,6 +4,9 @@ metadata:
   creationTimestamp: null
   labels:
     app: hello-web
+    env: qa
+    owner: hello-web-team
+    ver: v1.0
   annotations:
     kubernetes.io/change-cause: v1.0 release # rollout change clause
   name: hello-web
@@ -12,12 +15,18 @@ spec:
   selector:
     matchLabels:
       app: hello-web
+      env: qa
+      owner: hello-web-team
+      ver: v1.0
   strategy: {}
   template:
     metadata:
       creationTimestamp: null
       labels:
         app: hello-web
+        env: qa
+        owner: hello-web-team
+        ver: v1.0
     spec:
       containers:
         - image: ghcr.io/suren-m/hello-web:1.0
