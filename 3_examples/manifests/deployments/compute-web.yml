@@ -1,0 +1,46 @@
+# k get nodes -o yaml | grep -C 5 'taints'
+# k get nodes -L agentpool
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: compute-web
+    env: compute-optimized-dev
+    owner: compute-web-team
+    ver: v2.0
+  annotations:
+    kubernetes.io/change-cause: v2.0 # rollout change clause
+  name: compute-web-2.0
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: compute-web
+      env: compute-optimized-dev
+      owner: compute-web-team
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: compute-web
+        env: compute-optimized-dev
+        owner: compute-web-team
+        ver: v2.0
+    spec:
+      containers:
+        - image: ghcr.io/suren-m/hello-web:2.0
+          name: compute-web
+          resources: {}
+      # nodeName: specific-ode-name
+      nodeSelector:
+        workloads: cpu-optimized
+        agentpool: cpuoptimized
+      tolerations:
+        - key: "workloads"
+          operator: "Equal"
+          value: "cpu-optimized"
+          effect: "NoSchedule"
+status: {}

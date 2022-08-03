@@ -4,6 +4,8 @@ kubectl get pods --field-selector=status.phase=Running
 kubectl get pod -l app=hello-web -o jsonpath="{.items[0].metadata.name}"
 # all pods
 kubectl get pod -l app=hello-web -o jsonpath="{.items[*].metadata.name}"
+# all pods in a specific node
+kubectl get pods --all-namespaces -o wide --field-selector spec.nodeName=<node>
 ```
 
 ### Events
