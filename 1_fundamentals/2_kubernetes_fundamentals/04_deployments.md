@@ -67,8 +67,8 @@ status: {}
 5. Access your app by `Port-Forwarding` to your deployment
 
 ```bash
-# Notice how in this case, backend port points to 8080 of app container inside the pod
-kubectl port-forward deployment.apps/hello-web 9003:8080
+# Notice how in this case, backend port points to 80 of app container inside the pod
+kubectl port-forward deployment.apps/hello-web 9003:80
 
 http localhost:9003 # or the port that you forwarded to
 ```
