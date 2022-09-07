@@ -1,0 +1,58 @@
+apiVersion: v1
+kind: ConfigMap
+data:
+  api-location: http://my-api
+  targetenv: demo
+metadata:
+  creationTimestamp: null
+  name: myconfig
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: web
+  annotations:
+    description: sample
+  name: web
+spec:
+  volumes:
+    - name: myconfigvol
+      configMap:
+        name: myconfig
+
+  containers:
+    - image: nginx:1.19.0
+      name: website
+      ports:
+        - containerPort: 80
+      resources:
+        limits:
+          cpu: "1"
+        requests:
+          cpu: 300m
+      volumeMounts:
+        - name: myconfigvol
+          mountPath: /etc/myconfig
+          readOnly: true
+      env:
+        - name: API_LOCATION
+          valueFrom:
+            configMapKeyRef:
+              name: myconfig
+              key: targetenv
+
+    - image: redis
+      name: cache
+      volumeMounts:
+        - name: myconfigvol
+          mountPath: /etc/myconfig2
+      resources:
+        limits:
+          cpu: "1"
+        requests:
+          cpu: 200m
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}
