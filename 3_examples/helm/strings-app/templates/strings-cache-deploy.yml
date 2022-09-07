@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: strings-app
+    environment: dev
+    owner: suren
+    product: demo-app
+  name: strings-cache
+  
+spec:
+  replicas: {{ .Values.cache.replicas }}
+  selector:
+    matchLabels:
+      app: strings-cache
+      environment: dev
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: strings-cache
+        environment: dev
+        owner: suren
+        product: demo-app
+    spec:
+      containers:
+      - image: redis:6.0.9
+        name: strings-cache
+        resources:
+          limits:
+            cpu: 200m
+            memory: 512Mi
+          requests:
+            cpu: 100m
+            memory: 256Mi
+status: {}

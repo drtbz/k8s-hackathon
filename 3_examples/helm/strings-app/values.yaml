@@ -1,0 +1,12 @@
+# Default values for strings-app.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+api:
+  replicas: 3
+
+cache:
+  replicas: 1
+
+frontend:
+  replicas: 3

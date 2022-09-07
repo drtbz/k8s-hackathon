@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: strings-app
+    environment: dev
+    owner: suren
+    product: demo-app
+  name: strings-frontend
+  
+spec:
+  replicas: {{ .Values.frontend.replicas }}
+  selector:
+    matchLabels:
+      app: strings-frontend
+      environment: dev
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: strings-frontend
+        environment: dev
+        owner: suren
+        product: demo-app
+    spec:
+      containers:
+      - env:
+        - name: API_PATH_BASE
+          value: strings-api
+        image: surenmcode/strings-frontend:main-43
+        name: strings-frontend
+        resources:
+          limits:
+            cpu: 150m
+            memory: 256Mi
+          requests:
+            cpu: 100m
+            memory: 128Mi
+status: {}
