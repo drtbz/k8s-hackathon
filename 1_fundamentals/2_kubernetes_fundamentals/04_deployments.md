@@ -14,9 +14,8 @@ In this lab, we will create deployments with replica sets and apply everything e
 
     ```bash  
     
-    # Make sure to replace <your-username> with your docker hub username 
-    # (or surenmcode if you're having problems with your docker hub username)
-
+    # Make sure to replace <your-username> with your github-username (or if using K8s locally, just use the name of your local image)
+        
     kubectl create deploy hello-web --image=<github-username>/hello-web:1.0 -o yaml --dry-run=client > hello-web.yaml    
     ```
 
@@ -46,7 +45,7 @@ spec:
         app: hello-web
     spec:
       containers:
-      - image: <github-username>/hello-web:1.0
+      - image: <github-username>/hello-web:1.0 # or if using K8s locally, just use the name of your local image
         name: hello-web
         resources: {}
 status: {}
